@@ -57,9 +57,11 @@ Application.Views.Section = Backbone.View.extend({
  * @extends {Backbone.Events, Backbone.View}
 */
 Application.Views.Container = Backbone.View.extend({
+    /* cache $main DOM node */
     el: $('#main'),
     collection : new Application.Collections.Collection(),
     initialize: function () {
+        /* DOM node scoped to $main DOM node */
         this.$article = this.$('article');
         this.listenTo(this.collection, 'add', this.addOne);
         this.listenTo(this.collection, 'all', _.debounce(this.render, 0));
@@ -74,7 +76,8 @@ Application.Views.Container = Backbone.View.extend({
         this.$article.html(view.render().el);
     },
     create : function(){
-        this.create(this.passAttributes());
+        /* call addOne function from collection, ordering is passed by reference */
+        this.collection.create(this.passAttributes());
     }
 });
 
@@ -88,6 +91,9 @@ Application.Routes.Router = Backbone.Router.extend({
     },
     routes: {
         'image(/:src)(/:ext)': 'image'
+    },
+    image : function(src,ext){
+        
     }
 });
 
