@@ -12,4 +12,22 @@ This list outlines some of the things that I would change. I will provide furthe
 - Persistance
 - WebViews
 - PostMessage
+- Version
 
+The console included in the original repository is from [javascript-sandbox-console](https://github.com/openexchangerates/javascript-sandbox-console).
+
+* [RequireJS](https://requirejs.org/)
+
+- RequireJS text module
+- RequireJS link module
+- RJS Code Compiler
+
+Structure of client code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
+
+The text modules can and will be converted from html to javascript. Which will also remove the XHR requests made to the template files from requirejs and backbone.
+
+## HTTP
+
+## JS
+
+## CSS
