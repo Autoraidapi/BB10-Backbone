@@ -1,4 +1,5 @@
 /**
+ * signals and slots
  * mime/type dictionary
  * encoding/decoding helpers
  * expose an object to global
@@ -6,7 +7,8 @@
 
 const Application = {
     Scope: {
-        main: null
+        main : null,
+        sandbox : null
     },
     Models: {},
     Collections: {},
@@ -100,6 +102,33 @@ Application.Collections.Collection = Backbone.Collection.extend({
  * digest
  * 
  */
+Application.Views.Channel = Backbone.View.extend({
+    preinitialize: function (){},
+    events : {
+        'message iframe' : 'message'
+    },
+    template: _.template('<iframe src=""></iframe>'),
+    render: function (src, ext) {
+        // have the option to use deprecated getUserMedia here to stream a context to a canvas
+        // Uint8Array();
+        this.$el.html(this.template({
+            src: src,
+            ext: ext
+        }));
+        return this;
+    }
+});
+
+/**
+ * @constructor
+ * @extends {Backbone.Events, Backbone.View}
+ * 
+ * request,response
+ * arraybuffer
+ * transfer
+ * digest
+ * 
+ */
 Application.Views.Section = Backbone.View.extend({
     preinitialize: function () {},
     template: _.template('\
@@ -166,7 +195,16 @@ Application.Routes.Router = Backbone.Router.extend({
     }
 });
 
+// main function to initialize the application and cleanup resources for gc
 
 with(Application.Scope) {
     main = new Application.Routes.Router();
+    sandbox = {
+        // iframe message channel
+        Model : Backbone.Model.extend({}),
+        // interface to channel messaging
+        View : Backbone.Model.extend({})
+    }
 }
+
+// delete Application[''];
