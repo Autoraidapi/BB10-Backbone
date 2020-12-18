@@ -24,7 +24,7 @@ The console included in the original repository is from [javascript-sandbox-cons
 
 Structure of client code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
 
-The text modules can and will be converted from html to javascript. Which will also remove the XHR requests made to the template files from requirejs and backbone.
+The text modules can and will be converted from html to javascript which will also remove the XHR requests made to the template files from requirejs and backbone.
 
 ## HTTP
 
