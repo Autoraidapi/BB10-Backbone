@@ -9,6 +9,7 @@ This list outlines some of the things that I would change. I will provide furthe
 - Formatting
 - Mixins
 - Sandboxing
+- Threads
 - Persistance
 - WebViews
 - PostMessage
