@@ -1,3 +1,8 @@
+
+/**
+ * @constructor
+ * @extends {Backbone.Events, Backbone.View}
+*/
 const Section = Backbone.View.extend({
     template: _.template('\
         <% if(obj.ext.match(/svg|png|ico|jpg|jpeg/)){ %>\
@@ -12,6 +17,11 @@ const Section = Backbone.View.extend({
         return this;
     }
 });
+
+/**
+ * @constructor
+ * @extends {Backbone.Events, Backbone.View}
+*/
 const Container = Backbone.View.extend({
     el: $('#main'),
     initialize: function () {
@@ -22,6 +32,11 @@ const Container = Backbone.View.extend({
         this.$article.html(view.render(src, ext).el);
     }
 });
+
+/**
+ * @constructor
+ * @extends {Backbone.Events, Backbone.Router}
+*/
 const Router = Backbone.Router.extend({
     initialize : function(){
         this.container = new Container();
@@ -30,6 +45,6 @@ const Router = Backbone.Router.extend({
         'image(/:src)(/:ext)': 'image'
     },
     image : function (src, ext) {
-        this.container.renderSection(src, ext)
+        this.container.renderSection(src, ext);
     }
 });
