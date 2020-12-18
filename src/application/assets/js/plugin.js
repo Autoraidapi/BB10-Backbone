@@ -5,13 +5,13 @@
  */
 
 const Application = {
-    Scope : {
-        main : null
+    Scope: {
+        main: null
     },
-    Models : {},
-    Collections : {},
-    Views : {},
-    Routes : {}
+    Models: {},
+    Collections: {},
+    Views: {},
+    Routes: {}
 };
 
 /**
@@ -25,68 +25,69 @@ const Application = {
  * transfer
  * order
  * guid
-*/
+ */
 Application.Models.Model = Backbone.Model.extend({
-    preinitialize : function(){
-		this.worker = new Worker(
-			URL.createObjectURL(
-				new Blob(['self.onmessage=function(event){self.postMessage(event, [event.data]);};'], {
-					type: "text/javascript"
-				})
-			)
-		);
+    preinitialize: function () {
+        this.worker = new Worker(
+            URL.createObjectURL(
+                new Blob(['self.onmessage=function(event){self.postMessage(event, [event.data]);};'], {
+                    type: "text/javascript"
+                })
+            )
+        );
     },
-    defaults : function(){
+    defaults: function () {
         return {
             // additional attributes 
             // these will be dynamically evaluated, then interpolated inside the template string
-            order : Application.Scope.main.container.collection.nextOrder()
+            order: Application.Scope.main.container.collection.nextOrder()
         }
     },
-    validate : function(){
+    validate: function () {
         // regex match
         // regex test
         // setup channel 
     },
-    initialize : function(){
-		this.worker.addEventListener("message", this.message.bind(this), true);
+    initialize: function () {
+        this.worker.addEventListener("message", this.message.bind(this), true);
     },
 
-    sync : Backbone.localforage.sync('model'),
+    sync: Backbone.localforage.sync('model'),
 
     // async
-    xhr : function(composite){
+    xhr: function (composite) {
         var request = new XMLHttpRequest();
         request.open('GET', composite, true);
         request.responseType = 'arraybuffer';
-        request.addEventListener('load', function(event){
+        request.addEventListener('load', function (event) {
             this.post(event.data);
         }, false);
         request.send(null);
     },
-    post : function(message){
+    post: function (message) {
         this.worker.postMessage(message, [message]);
     },
-    close : function(){
+    close: function () {
         this.worker.terminate();
     },
-    message : function(event){
-
+    message: function (event) {
+        // have the option to use synchronous filereader
+        // have the option to use synchronous filesystem methods here with deprecated webkitfilesystem
     }
 });
 
 /**
  * @constructor
  * @extends {Backbone.Events, Backbone.View}
-*/
+ */
 Application.Collections.Collection = Backbone.Collection.extend({
-    preinitialize : function(){},    
-    model : Application.Models.Model,
-    sync : Backbone.localforage.sync('collection'),
-    nextOrder : function () {
+    preinitialize: function () {},
+    model: Application.Models.Model,
+    sync: Backbone.localforage.sync('collection'),
+    nextOrder: function () {
         return this.length ? this.last().get('order') + 1 : 1;
     },
-    comparator: 'order' 
+    comparator: 'order'
 });
 
 /**
@@ -98,15 +99,16 @@ Application.Collections.Collection = Backbone.Collection.extend({
  * transfer
  * digest
  * 
-*/
+ */
 Application.Views.Section = Backbone.View.extend({
-    preinitialize : function(){},    
+    preinitialize: function () {},
     template: _.template('\
         <% if(/^data:[^;]+;base64,/.test(obj.ext)){ %>\
             "<%= obj.src %>.<%= obj.ext %>"\
         <% } %>\
     '),
     render: function (src, ext) {
+        // have the option to use deprecated getUserMedia here to stream a context to a canvas
         // Uint8Array();
         this.$el.html(this.template({
             src: src,
@@ -119,26 +121,28 @@ Application.Views.Section = Backbone.View.extend({
 /**
  * @constructor
  * @extends {Backbone.Events, Backbone.View}
-*/
+ */
 Application.Views.Container = Backbone.View.extend({
-    preinitialize : function(){},    
+    preinitialize: function () {},
     el: $('#main'),
-    collection : new Application.Collections.Collection(),
+    collection: new Application.Collections.Collection(),
     initialize: function () {
         this.$article = this.$('article');
         this.listenTo(this.collection, 'add', this.addOne);
         this.listenTo(this.collection, 'all', _.debounce(this.render, 0));
     },
-    passAttributes : function(){
+    passAttributes: function () {
         return {
-            order : this.collection.nextOrder()
+            order: this.collection.nextOrder()
         }
     },
-    addOne : function (model) {
-        var view = new Application.Views.Section({ model : model });
+    addOne: function (model) {
+        var view = new Application.Views.Section({
+            model: model
+        });
         this.$article.html(view.render().el);
     },
-    create : function(){
+    create: function () {
         this.collection.create(this.passAttributes());
     }
 });
@@ -146,23 +150,23 @@ Application.Views.Container = Backbone.View.extend({
 /**
  * @constructor
  * @extends {Backbone.Events, Backbone.Router}
-*/
+ */
 Application.Routes.Router = Backbone.Router.extend({
-    preinitialize : function(){},    
-    initialize : function(){
+    preinitialize: function () {},
+    initialize: function () {
         this.container = new Application.Views.Container();
     },
     routes: {
         'image(/:src)(/:ext)': 'image'
     },
-    image : function(src,ext){
+    image: function (src, ext) {
         this.image = new Image();
         this.image.crossOrigin = 'anonymous';
-        
+
     }
 });
 
 
-with(Application.Scope){
+with(Application.Scope) {
     main = new Application.Routes.Router();
 }
