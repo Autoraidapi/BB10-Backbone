@@ -21,7 +21,7 @@ define(function() {
 
         // generator
 
-        // creation(genereator)
+        // creation(this.generator())
 
     });
     
