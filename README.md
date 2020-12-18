@@ -17,22 +17,30 @@ This list outlines some of the things that I would change. I will provide furthe
 - Version
 - BackEndHost
 - FrontEndHost
+- AMDLoader
 
 The console included in the original repository is from [javascript-sandbox-console](https://github.com/openexchangerates/javascript-sandbox-console).
 
-* [RequireJS](https://requirejs.org/)
+---
 
-- RequireJS text module
-- RequireJS link module
-- RJS Code Compiler
+- [Invocation Framework](https://developer.blackberry.com/native/documentation/device_platform/invocation/invocation_framework.html)
 
-Structure of front end client code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
-
-The text modules can and will be converted from html to javascript which will also remove the XHR requests made to the template files from requirejs and backbone.
 
 ## HTTP
 
+
 ## JS
+
+Not very clearly defined steps to running javascript in a native application.
+
+[QT Bridge](https://github.com/Autoraidapi/bookmarklets/tree/master/assets/plugins/webworks/QtBridge)
+
+Concepts and configurations to run JS with a native app.
+
+[JNEXT](https://github.com/Autoraidapi/bookmarklets/tree/master/assets/plugins/webworks/Mongoose)
+
+Concepts and configurations to use JNEXT. 
+
 
 Following the barebones structure of the backbone & backbone requirejs examples from [Todo MVC application](https://github.com/tastejs/todomvc), offers abstraction of several hard to manage processes and events. The other backbone examples like the typescript version are setup with some smells that are not needed when you use backbones latest version.
 
@@ -44,8 +52,11 @@ I will explain how to use transferable messaging to not only speed up the proces
 
 If successful, then it will be possible to pipe the results into a webview and proivide a primitive http based web browser. 
 
-Further additions would involve enumeration of available javascript api's and mixins which bind to the BlackBerry10 invocation framework. 
-This would allow simple URI's to be used as a way to communicate with other platforms and applications, even in the future. Strings encoded as tails to the URI's would need to be decoded within an event before the final load event of the applications document or window. 
+Further additions would involve enumeration of available javascript api's and mixins which bind to the BlackBerry10 invocation framework.
+
+This would allow simple uri's registered this way to pass encoded messages to other uri's registered the same way and not need any configuration of the endpoints, it's left to the user with browser url smarttags or share target. 
+
+Strings encoded as suffixes to the uri would need to be decoded within an event before the final load event of the applications document or window. 
 
 
 
