@@ -32,6 +32,18 @@ Application.Models.Node = Backbone.Model.extend({
         this.priority = priority;
     }
 });
+/**
+ * xhr.setRequestHeader('Accept', '');
+ * xhr.setRequestHeader('X', 'true');
+ * xhr.addEventListener('readystatechange', function(event){},false);
+ * xhr.addEventListener('load', function(event){
+ * if (/<html/i.test(this.responseText)) {
+ *  // text needs recomplilation from raw, new Blob([arraybuffer],{octet-stream})
+ *  responseText.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0],
+ *  responseText.match(/<body[^>]*>([\s\S.]*)<\/body>/i)[0]
+ * }
+ * }, false);
+ */
 
 /**
  * @constructor
