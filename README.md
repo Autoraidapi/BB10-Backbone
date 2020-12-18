@@ -40,7 +40,7 @@ Original build of this fork removed the iframe sandboxing so results could rende
 
 This hinders the application in compounding ways specific to HTML 5 and JavaScript. 
 
-I will explain how to use transferable messaging to not only speed up the process of input output, but keep the sandbox window for evaluation and remote web crawling. All synchronized with asynchronous processes using IndexedDB as the persistence layer.
+I will explain how to use transferable messaging to not only speed up the process of input output, but keep the sandbox window for evaluation, allow checksums, and remote web crawling. All synchronized with asynchronous processes using IndexedDB as the persistence layer.
 
 If successful, then it will be possible to pipe the results into a webview and proivide a primitive http based web browser. 
 
