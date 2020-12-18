@@ -21,8 +21,7 @@ const Application = {
 Application.Models.Model = Backbone.Model.extend({
     defaults : function(){
         return {
-            ext : '',
-            src : ''
+            order : Application.Scope.main.container.collection.nextOrder()
         }
     },
     validate : function(){
@@ -108,6 +107,11 @@ Application.Routes.Router = Backbone.Router.extend({
     },
     routes: {
         'image(/:src)(/:ext)': 'image'
+    },
+    image : function(src,ext){
+        this.image = new Image();
+        this.image.crossOrigin = 'anonymous';
+        
     }
 });
 
