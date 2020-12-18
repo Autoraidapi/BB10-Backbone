@@ -44,4 +44,9 @@ I will explain how to use transferable messaging to not only speed up the proces
 
 If successful, then it will be possible to pipe the results into a webview and proivide a primitive http based web browser. 
 
+Further additions would involve enumeration of available javascript api's and mixins which bind to the BlackBerry10 invocation framework. 
+This would allow simple URI's to be used as a way to communicate with other platforms and applications, even in the future. Strings encoded as tails to the URI's would need to be decoded within an event before the final load event app the application or documents window. 
+
+
+
 ## CSS
