@@ -34,7 +34,7 @@ The text modules can and will be converted from html to javascript which will al
 
 ## JS
 
-Following the barebones structure of the Todo MVC application, offers abstraction of several hard to manage processes and events. 
+Following the barebones structure of the backbone & backbone requirejs examples from [Todo MVC application](https://github.com/tastejs/todomvc), offers abstraction of several hard to manage processes and events. The other backbone examples like the typescript version are setup with some smells that are not needed when you use backbon.
 
 Front end code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
 
