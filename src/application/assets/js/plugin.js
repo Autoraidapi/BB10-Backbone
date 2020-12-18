@@ -1,3 +1,8 @@
+/**
+ * mime/type dictionary
+ * encoding/decoding helpers
+ * expose an object to global
+ */
 
 const Application = {
     Scope : {
@@ -6,7 +11,7 @@ const Application = {
     Models : {},
     Collections : {},
     Views : {},
-    Router : {}
+    Routes : {}
 };
 
 /**
@@ -16,14 +21,20 @@ const Application = {
 Application.Models.Model = Backbone.Model.extend({
     defaults : function(){
         return {
-            
+            ext : '',
+            src : ''
         }
+    },
+    validate : function(){
+        // regex match
+        // regex test
+        // setup channel 
     }
 });
 
 /**
  * @constructor
- * @extends {Backbone.Events, Backbone.Collection}
+ * @extends {Backbone.Events, Backbone.View}
 */
 Application.Collections.Collection = Backbone.Collection.extend({
     model : Application.Models.Model,
@@ -36,14 +47,21 @@ Application.Collections.Collection = Backbone.Collection.extend({
 /**
  * @constructor
  * @extends {Backbone.Events, Backbone.View}
+ * 
+ * request,response
+ * arraybuffer
+ * transfer
+ * digest
+ * 
 */
 Application.Views.Section = Backbone.View.extend({
     template: _.template('\
-        <% if(obj.ext.match(/svg|png|ico|jpg|jpeg/)){ %>\
+        <% if(/^data:[^;]+;base64,/.test(obj.ext)){ %>\
             "<%= obj.src %>.<%= obj.ext %>"\
         <% } %>\
     '),
     render: function (src, ext) {
+        // Uint8Array();
         this.$el.html(this.template({
             src: src,
             ext: ext
@@ -57,11 +75,9 @@ Application.Views.Section = Backbone.View.extend({
  * @extends {Backbone.Events, Backbone.View}
 */
 Application.Views.Container = Backbone.View.extend({
-    /* cache $main DOM node */
     el: $('#main'),
     collection : new Application.Collections.Collection(),
     initialize: function () {
-        /* DOM node scoped to $main DOM node */
         this.$article = this.$('article');
         this.listenTo(this.collection, 'add', this.addOne);
         this.listenTo(this.collection, 'all', _.debounce(this.render, 0));
@@ -76,8 +92,7 @@ Application.Views.Container = Backbone.View.extend({
         this.$article.html(view.render().el);
     },
     create : function(){
-        /* call addOne function from collection, ordering is passed by reference */
-        this.collection.create(this.passAttributes());
+        this.create(this.passAttributes());
     }
 });
 
@@ -91,9 +106,6 @@ Application.Routes.Router = Backbone.Router.extend({
     },
     routes: {
         'image(/:src)(/:ext)': 'image'
-    },
-    image : function(src,ext){
-        
     }
 });
 
