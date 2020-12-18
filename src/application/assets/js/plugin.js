@@ -17,12 +17,28 @@ const Application = {
 };
 
 /**
+ * Demo Micro Process 
+ * Dijkstra
+ * MessageChannel [message, '*', []]
+ */ 
+Application.Models.Node = Backbone.Model.extend({
+    defaults : {
+        head : null,
+        tail : null
+    },
+    initialize : function(value, priority){
+        // this.value = _.extend({}, value);
+        this.value = value;
+        this.priority = priority;
+    }
+});
+
+/**
  * @constructor
  * @extends {Backbone.Events, Backbone.Model}
  * 
  * processing model for transfer data
  * indexedDB
- * messagechannel
  * webworkers
  * transfer
  * order
@@ -108,15 +124,8 @@ Application.Views.Channel = Backbone.View.extend({
         'message iframe' : 'message'
     },
     template: _.template('<iframe src=""></iframe>'),
-    render: function (src, ext) {
-        // have the option to use deprecated getUserMedia here to stream a context to a canvas
-        // Uint8Array();
-        this.$el.html(this.template({
-            src: src,
-            ext: ext
-        }));
-        return this;
-    }
+    initialize : function(){},
+    render: function () {}
 });
 
 /**
@@ -136,13 +145,10 @@ Application.Views.Section = Backbone.View.extend({
             "<%= obj.src %>.<%= obj.ext %>"\
         <% } %>\
     '),
-    render: function (src, ext) {
+    render: function () {
         // have the option to use deprecated getUserMedia here to stream a context to a canvas
         // Uint8Array();
-        this.$el.html(this.template({
-            src: src,
-            ext: ext
-        }));
+        this.$el.html(this.template(this.model.toJSON()));
         return this;
     }
 });
