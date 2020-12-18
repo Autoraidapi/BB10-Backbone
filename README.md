@@ -34,18 +34,19 @@ The text modules can and will be converted from html to javascript which will al
 
 ## JS
 
-Following the barebones structure of the Todo MVC application, offers abstraction of several hard to manage processes and events. 
+Following the barebones structure of the backbone & backbone requirejs examples from [Todo MVC application](https://github.com/tastejs/todomvc), offers abstraction of several hard to manage processes and events. The other backbone examples like the typescript version are setup with some smells that are not needed when you use backbones latest version.
 
-Front end code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
-
-The text modules can and will be converted from html to javascript which will also remove the XHR requests made to the template files from requirejs and backbone.
-
-Original build removed the iframe sandboxing so results could render to his webview. 
+Original build of this fork removed the iframe sandboxing so results could render to his webview. 
 
 This hinders the application in compounding ways specific to HTML 5 and JavaScript. 
 
 I will explain how to use transferable messaging to not only speed up the process of input output, but keep the sandbox window for evaluation and remote web crawling. All synchronized with asynchronous processes using IndexedDB as the persistence layer.
 
 If successful, then it will be possible to pipe the results into a webview and proivide a primitive http based web browser. 
+
+Further additions would involve enumeration of available javascript api's and mixins which bind to the BlackBerry10 invocation framework. 
+This would allow simple URI's to be used as a way to communicate with other platforms and applications, even in the future. Strings encoded as tails to the URI's would need to be decoded within an event before the final load event app the application or documents window. 
+
+
 
 ## CSS
