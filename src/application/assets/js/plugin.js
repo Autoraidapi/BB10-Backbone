@@ -29,7 +29,8 @@ Application.Models.Model = Backbone.Model.extend({
         // regex match
         // regex test
         // setup channel 
-    }
+    },
+    sync : Backbone.localforage.sync('model')
 });
 
 /**
@@ -38,6 +39,7 @@ Application.Models.Model = Backbone.Model.extend({
 */
 Application.Collections.Collection = Backbone.Collection.extend({
     model : Application.Models.Model,
+    sync : Backbone.localforage.sync('collection'),
     nextOrder : function () {
         return this.length ? this.last().get('order') + 1 : 1;
     },
