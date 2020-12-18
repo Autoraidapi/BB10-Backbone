@@ -27,7 +27,15 @@ const Application = {
  * guid
 */
 Application.Models.Model = Backbone.Model.extend({
-    preinitialize : function(){},
+    preinitialize : function(){
+		this.worker = new Worker(
+			URL.createObjectURL(
+				new Blob(['self.onmessage=function(event){self.postMessage(event, [event.data]);};'], {
+					type: "text/javascript"
+				})
+			)
+		);
+    },
     defaults : function(){
         return {
             // additional attributes 
@@ -41,18 +49,11 @@ Application.Models.Model = Backbone.Model.extend({
         // setup channel 
     },
     initialize : function(){
+		this.worker.addEventListener("message", this.message.bind(this), true);
+    },
 
-    },
     sync : Backbone.localforage.sync('model'),
-    process : function(){
-		this.worker = new Worker(
-			URL.createObjectURL(
-				new Blob(['self.onmessage=function(event){self.postMessage(event, [event.data]);};'], {
-					type: "text/javascript"
-				})
-			)
-		);
-    },
+
     // async
     xhr : function(composite){
         var request = new XMLHttpRequest();
@@ -67,6 +68,9 @@ Application.Models.Model = Backbone.Model.extend({
         this.worker.postMessage(message, [message]);
     },
     close : function(){
+        this.worker.terminate();
+    },
+    message : function(event){
 
     }
 });
