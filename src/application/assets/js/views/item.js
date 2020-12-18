@@ -9,10 +9,13 @@ define(function() {
         events : {},
 
         initialize : function(){
-            this.listenTo();
-            this.listenTo();
-            this.listenTo();
-        }
+            this.listenTo({}, 'change', this.render);
+            this.listenTo({}, 'destroy', this.remove);
+            /* */
+            this.listenTo({},  'visible', this.toggleVisible);
+        },
+
+        render : function(){}
 
     })
     

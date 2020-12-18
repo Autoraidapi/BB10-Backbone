@@ -10,10 +10,14 @@ define(function() {
 
         initialize : function(){
             // Emitter responses from changes in our persistence layer
-            this.listenTo();
-            this.listenTo();
-            this.listenTo();
+			this.listenTo(/**/[], 'add', this.addOne);
+			this.listenTo(/**/[], 'reset', this.addAll);
+			this.listenTo(/**/[], 'change:completed', this.filterOne);
+			this.listenTo(/**/[], 'filter', this.filterAll);
+			this.listenTo(/**/[], 'all', _.debounce(this.render, 0));
         },
+
+        render : function(){}
 
         // one
 
