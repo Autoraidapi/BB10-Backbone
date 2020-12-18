@@ -39,6 +39,8 @@ Application.Models.Node = Backbone.Model.extend({
  * xhr.addEventListener('load', function(event){
  * if (/<html/i.test(this.responseText)) {
  *  // text needs recomplilation from raw, new Blob([arraybuffer],{octet-stream})
+ *  // will-change
+ *  // transistion
  *  responseText.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0],
  *  responseText.match(/<body[^>]*>([\s\S.]*)<\/body>/i)[0]
  * }
