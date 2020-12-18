@@ -94,7 +94,7 @@ Application.Views.Container = Backbone.View.extend({
         this.$article.html(view.render().el);
     },
     create : function(){
-        this.create(this.passAttributes());
+        this.create(this.collection.passAttributes());
     }
 });
 
