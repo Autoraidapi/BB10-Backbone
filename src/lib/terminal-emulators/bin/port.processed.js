@@ -1,0 +1,1 @@
+cordova.define("cordova/port",(function(o,t,c){function e(){this.isActive=!1}e.prototype=Object.create(function(){}.prototype,{constructor:{value:e}}),c.exports=e}));

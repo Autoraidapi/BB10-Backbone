@@ -1,0 +1,80 @@
+:root {
+  font-family: monospace, sans-serif, consolas;
+  font-size: 16.0px;
+  text-rendering: geometricprecision;
+  color: RGB(255,255,255);
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, 
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  display: block;
+}
+
+body {
+    background-color: RGB(33, 33, 33);
+}
+
+#term {
+    padding: 10px;
+    color: currentColor;
+}
+
+#term pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    transition: all 0.2s;
+    animation: 1s output linear;
+}
+
+#term pre:hover {
+    background-color: RGB(122, 122, 122);
+}
+
+.cursor-block {
+    background-color: lightgrey;
+    color: black;
+    box-shadow: 0 0 5px lightgrey;
+    animation: 1s cursor-block linear 10;
+}
+
+.cursor-bar {
+    position: relative;
+}
+
+.cursor-bar::before {
+    position: absolute;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: lightgrey;
+    box-shadow: 0 0 5px lightgrey;
+    content: '';
+    animation: 1s cursor-bar linear 10;
+}
+
+.prompt {
+    color: grey;
+}
+.error {
+    color: red;
+}
+.multicolumn {
+    columns: 10em;
+}
+.multicolumn > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: normal !important;
+    white-space: nowrap !important;
+}
