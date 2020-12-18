@@ -22,7 +22,7 @@ Application.Models.Model = Backbone.Model.extend({
 
 /**
  * @constructor
- * @extends {Backbone.Events, Backbone.View}
+ * @extends {Backbone.Events, Backbone.Collection}
 */
 Application.Collections.Collection = Backbone.Collection.extend({
     model : Application.Models.Model,
