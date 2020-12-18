@@ -1,3 +1,4 @@
+
 const Application = {
     Scope : {
         main : null
