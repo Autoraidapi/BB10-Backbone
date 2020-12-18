@@ -81,7 +81,7 @@ Application.Views.Container = Backbone.View.extend({
  * @constructor
  * @extends {Backbone.Events, Backbone.Router}
 */
-Application.Routes.Routes = Backbone.Router.extend({
+Application.Routes.Router = Backbone.Router.extend({
     initialize : function(){
         this.container = new Application.Views.Container();
     },
