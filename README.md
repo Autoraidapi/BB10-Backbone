@@ -36,11 +36,7 @@ The text modules can and will be converted from html to javascript which will al
 
 Following the barebones structure of the backbone & backbone requirejs examples from [Todo MVC application](https://github.com/tastejs/todomvc), offers abstraction of several hard to manage processes and events. The other backbone examples like the typescript version are setup with some smells that are not needed when you use backbones latest version.
 
-Front end code must be wrapped by a graph structure. The tool will use the vertexes of the graph as references and build a single file. 
-
-The text modules can and will be converted from html to javascript which will also remove the XHR requests made to the template files from requirejs and backbone.
-
-Original build removed the iframe sandboxing so results could render to his webview. 
+Original build of this fork removed the iframe sandboxing so results could render to his webview. 
 
 This hinders the application in compounding ways specific to HTML 5 and JavaScript. 
 
