@@ -17,10 +17,21 @@ const Application = {
 /**
  * @constructor
  * @extends {Backbone.Events, Backbone.Model}
+ * 
+ * processing model for transfer data
+ * indexedDB
+ * messagechannel
+ * webworkers
+ * transfer
+ * order
+ * guid
 */
 Application.Models.Model = Backbone.Model.extend({
+    preinitialize : function(){},
     defaults : function(){
         return {
+            // additional attributes 
+            // these will be dynamically evaluated, then interpolated inside the template string
             order : Application.Scope.main.container.collection.nextOrder()
         }
     },
@@ -29,7 +40,35 @@ Application.Models.Model = Backbone.Model.extend({
         // regex test
         // setup channel 
     },
-    sync : Backbone.localforage.sync('model')
+    initialize : function(){
+
+    },
+    sync : Backbone.localforage.sync('model'),
+    process : function(){
+		this.worker = new Worker(
+			URL.createObjectURL(
+				new Blob(['self.onmessage=function(event){self.postMessage(event, [event.data]);};'], {
+					type: "text/javascript"
+				})
+			)
+		);
+    },
+    // async
+    xhr : function(composite){
+        var request = new XMLHttpRequest();
+        request.open('GET', composite, true);
+        request.responseType = 'arraybuffer';
+        request.addEventListener('load', function(event){
+            this.post(event.data);
+        }, false);
+        request.send(null);
+    },
+    post : function(message){
+        this.worker.postMessage(message, [message]);
+    },
+    close : function(){
+
+    }
 });
 
 /**
@@ -37,6 +76,7 @@ Application.Models.Model = Backbone.Model.extend({
  * @extends {Backbone.Events, Backbone.View}
 */
 Application.Collections.Collection = Backbone.Collection.extend({
+    preinitialize : function(){},    
     model : Application.Models.Model,
     sync : Backbone.localforage.sync('collection'),
     nextOrder : function () {
@@ -56,6 +96,7 @@ Application.Collections.Collection = Backbone.Collection.extend({
  * 
 */
 Application.Views.Section = Backbone.View.extend({
+    preinitialize : function(){},    
     template: _.template('\
         <% if(/^data:[^;]+;base64,/.test(obj.ext)){ %>\
             "<%= obj.src %>.<%= obj.ext %>"\
@@ -76,6 +117,7 @@ Application.Views.Section = Backbone.View.extend({
  * @extends {Backbone.Events, Backbone.View}
 */
 Application.Views.Container = Backbone.View.extend({
+    preinitialize : function(){},    
     el: $('#main'),
     collection : new Application.Collections.Collection(),
     initialize: function () {
@@ -102,6 +144,7 @@ Application.Views.Container = Backbone.View.extend({
  * @extends {Backbone.Events, Backbone.Router}
 */
 Application.Routes.Router = Backbone.Router.extend({
+    preinitialize : function(){},    
     initialize : function(){
         this.container = new Application.Views.Container();
     },
