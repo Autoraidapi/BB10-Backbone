@@ -30,7 +30,17 @@ The console included in the original repository is from [javascript-sandbox-cons
 starting reference
 
 [iron-a11y-keys](https://github.com/PolymerElements/iron-a11y-keys)
- 
+
+Accessibility
+
+each layer of software for the user & the developer have a description framework for visibility queues.
+
+If we all code our applications and markup according to that.. 
+
+we should in theory be able to port platform applications following these practices to other platforms easily. 
+
+Again only as long as we all use the description framework as a baseline for standards.
+
 ## JS
 
 Not very clearly defined steps to running javascript in a native application.
