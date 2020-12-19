@@ -25,6 +25,12 @@ The console included in the original repository is from [javascript-sandbox-cons
 
 [Invocation Framework](https://developer.blackberry.com/native/documentation/device_platform/invocation/invocation_framework.html)
 
+## HTML
+
+starting reference
+
+[iron-a11y-keys](https://github.com/PolymerElements/iron-a11y-keys)
+ 
 ## JS
 
 Not very clearly defined steps to running javascript in a native application.
@@ -35,3 +41,11 @@ Not very clearly defined steps to running javascript in a native application.
 
 A second hop from reparse
 
+[Sandbox Scrape Wikipedia](https://000456207.deployed.codepen.website/assets/html/backbone/)
+
+no ssl yet, possibly achievable with WebIDL and window.open
+
+```
+:load reparse.js
+wiki('javascript')
+```
