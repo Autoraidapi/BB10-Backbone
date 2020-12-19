@@ -1,5 +1,25 @@
+/* backbone domain boiler plate */
+
+/**
+ * listenTo ( Model )
+ * change
+ * remove
+ * add
+ * 
+ * listenTo ( Collection )
+ * all
+ * add
+ * reset
+ * remove
+ * 
+ * eventListeners( DOM )
+ * eventListeners( Sandbox )
+ */
+
 define(['backbone'], function(Backbone){
-    
+
+
+/*    
     function Ctor(){
         this.preinitialize.apply(this, arguments);
         this.initialize.apply(this, arguments);
@@ -27,5 +47,6 @@ define(['backbone'], function(Backbone){
     });
 
     return Main;
+*/
 
 });

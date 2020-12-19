@@ -2,8 +2,6 @@
 
     requirejs.config({
 
-        /* base and assets are configured for the bundler script */
-
         baseUrl: 'vendor',
 
         shim: {
