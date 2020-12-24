@@ -1,6 +1,6 @@
-define(function() {
+define(['backbone'],function(Backbone) {
 
-    Backbone.View.extend({
+    var Container = Backbone.View.extend({
         preinitialize : function(){
             // list noop functions
         },
@@ -28,5 +28,7 @@ define(function() {
         // creation(this.generator())
 
     });
+
+    return Container;
     
 });
