@@ -23,8 +23,8 @@
             underscore: 'underscore',
             jquery: 'jquery',
             backbone: 'backbone',
-            localforage: '',
-            localforageBackbone: '',
+            localforage: 'localforage',
+            localforageBackbone: 'localforage.backbone',
             link: 'link',
             text: 'text'
         }

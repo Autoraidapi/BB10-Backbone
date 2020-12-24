@@ -1,24 +1,3 @@
-/*
- this is pseudo code, planning app object layout with message passing system
- uncertain of the strategy to use custom header here..  
- 
- i see the possibility of a native bar installer being added
- 
- md5
- sha512
- localStorage
- cookies
- /cgi-bin/
- User-Agent : Qnx 
- 
-*/
-
-/**
- * signals and slots
- * mime/type dictionary
- * encoding/decoding helpers
- * expose an object to global
- */
 
 const Application = {
     Scope: {
@@ -31,11 +10,6 @@ const Application = {
     Routes: {}
 };
 
-/**
- * Demo Micro Process 
- * Dijkstra
- * MessageChannel [message, '*', []]
- */ 
 Application.Models.Node = Backbone.Model.extend({
     defaults : {
         head : null,

@@ -1,1 +1,0 @@
-cordova.define("cordova/plugin_list",(function(e,b,a){a.exports=[{file:"bin/base.js",id:"com.blackberry.base.client",clobbers:["blackberry.base"]}],a.exports.metadata={"com.blackberry.base":"0.0.1"}}));

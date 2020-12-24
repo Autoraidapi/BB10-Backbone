@@ -1,1 +1,0 @@
-cordova.define("cordova/base",(function(o,t,e){function c(){}c.prototype=Object.create(function(){}.prototype,{constructor:{value:c}}),e.exports=c}));
