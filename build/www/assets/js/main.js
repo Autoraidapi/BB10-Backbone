@@ -6,6 +6,7 @@ define([
 ], function(Backbone, Collection, Container, Router){    
     
     function Main(){
+        
         this.router = new Router();
         Backbone.history.start();
     }
