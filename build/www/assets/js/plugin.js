@@ -101,9 +101,12 @@ define(function () {
             }, false);
             request.send(null);
         },
-        post: function (message) {
+        transfer : function (message) {
             this.worker.postMessage(message, [message]);
         },
+        post : function (message) {
+            this.worker.postMessage(message);
+        },        
         close: function () {
             this.worker.terminate();
         },
