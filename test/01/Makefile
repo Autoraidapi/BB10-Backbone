@@ -1,0 +1,1 @@
+QMAKE_TARGET = BB10-Backbone
