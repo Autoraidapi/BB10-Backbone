@@ -2,6 +2,8 @@
 
 This is a new fork of [DevTools Pro for BlackBerry 10](https://github.com/anpho/DevTools-Pro) from another developer.
 
+`JSON.stringify(Backbone.noConflict(), null, 2);`
+
 ```
 {
   'VERSION': '1.4.0',
