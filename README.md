@@ -2,7 +2,7 @@
 
 This is a new fork of [DevTools Pro for BlackBerry 10](https://github.com/anpho/DevTools-Pro) from another developer.
 
-```json
+```
 {
   'VERSION': '1.4.0',
   'emulateHTTP': false,
